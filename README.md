@@ -44,6 +44,7 @@ uv run app.py --taille 0.7             # hauteur des mèmes (part de la hauteur 
 1. Installe [OBS Studio](https://obsproject.com/) : il fournit la webcam virtuelle.
 2. Lance `uv run app.py --visio`.
 3. Dans ta visio, choisis la caméra **« OBS Virtual Camera »**.
+4. Si les mèmes apparaissent à l'envers dans ton propre aperçu (Meet l'affiche en miroir), relance avec `uv run app.py --visio --visio-miroir`.
 
 ## Régler les gestes sur tes mains
 

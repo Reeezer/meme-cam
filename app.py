@@ -4,6 +4,7 @@
     uv run app.py --hud                 + what the camera detects: face box, hand dots (brand colours)
     uv run app.py --debug               + the raw numbers the rules read, to tune gestes.py
     uv run app.py --visio               + virtual webcam for Google Meet / Zoom (OBS installed)
+    uv run app.py --visio --visio-miroir   the same, flipped: Meet mirrors your own preview, this puts the memes back the right way
     uv run app.py --enregistrer x.mp4   + records the result (real speed, H.264)
     uv run app.py --brut x.mp4          + records the plain webcam, to tune offline (analyser.py)
     uv run app.py --source essais.mp4 --hud --enregistrer demo.mp4   replays a recording
@@ -48,6 +49,8 @@ def main():
     ap.add_argument("--hauteur", type=int, default=720)
     ap.add_argument("--taille", type=float, default=0.6, help="meme height, share of the frame height")
     ap.add_argument("--visio", action="store_true", help="virtual webcam (OBS Virtual Camera)")
+    ap.add_argument("--visio-miroir", action="store_true",
+                    help="flip what the virtual webcam sends: Meet shows your own preview mirrored, this cancels it")
     ap.add_argument("--enregistrer", metavar="FICHIER.mp4")
     ap.add_argument("--brut", metavar="FICHIER.mp4", help="plain webcam recording, for analyser.py")
     ap.add_argument("--hud", action="store_true", help="show what is detected (for the video)")
@@ -130,7 +133,7 @@ def main():
                 texte_debug(image, lecture, geste_affiche)
 
             if virtuelle:
-                virtuelle.send(image)
+                virtuelle.send(cv2.flip(image, 1) if args.visio_miroir else image)
             if sortie:
                 sortie.ecrire(image)
             if not args.source:
