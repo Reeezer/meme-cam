@@ -1,0 +1,19 @@
+[project]
+name = "meme-cam"
+version = "0.1.0"
+description = "Webcam filter: make a gesture, the matching meme lands on your face, in any video call."
+requires-python = ">=3.11"
+dependencies = [
+    "mediapipe>=1.0.1",
+    "numpy>=2.4.6",
+    "opencv-python>=5.0.0.93",
+    "pillow>=12.3.0",
+    "pyvirtualcam>=0.15.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+[tool.pytest.ini_options]
+pythonpath = ["."]

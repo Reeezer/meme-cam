@@ -1,0 +1,16 @@
+# Environment
+.venv/
+__pycache__/
+.pytest_cache/
+
+# MediaPipe models: downloaded on first run
+modeles/
+
+# Meme images are not distributed (copyright): everyone brings their own
+memes/*
+!memes/memes.json
+
+# Recordings and analysis output
+*.mp4
+*.png
+analyse_*.txt
